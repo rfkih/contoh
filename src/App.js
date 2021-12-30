@@ -1,13 +1,14 @@
 import React from 'react';
 import "bootstrap/dist/css/bootstrap.css";
-import UseStateComponent from './hooks/UseStateComponent';
+import UseEffectComponent from './hooks/UseEffectComponent';
+
 
 import Home from './pages/Home'
 
 function App() {
     return (
         <h1>
-            <UseStateComponent/>
+            <Home/>
         </h1>
     )
 }

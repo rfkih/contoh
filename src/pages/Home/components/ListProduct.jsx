@@ -1,6 +1,7 @@
 import React from 'react'
 
-function ListProduct() {
+function ListProduct(props) {
+    console.log(props);
     return (
         <div className='col-9'>
             <h1>List Product</h1>
