@@ -18,17 +18,20 @@ function Index() {
           setFilteredProducts(res.data)
         })
         .catch((error) => {
-
+          console.log(alert(error.message))
         })
     },[]);
 
-    const onSearchProducts = (keyword)=> {
+    const onSearchProducts = ({keyword, category})=> {
+      
+
       const filterResult = products.filter((product)=>{
        const productLowerCase = product.productName.toLowerCase()
        const keywordLowerCase = keyword.toLowerCase()
-       
-       return productLowerCase.includes(keywordLowerCase)
-      })
+       return productLowerCase.includes(keywordLowerCase) && product.category.includes(category)
+      });
+
+      
 
       setFilteredProducts(filterResult)
     }

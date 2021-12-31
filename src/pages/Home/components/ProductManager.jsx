@@ -3,12 +3,16 @@ import React, {useState} from 'react'
  function ProductManager(props) {
 
    const [keyword, setKeyword] = useState('')
+   const [category,setCategory] = useState('')
 
-    const handleChange = (e) =>{
+    const handleKeywordChange = (e) =>{
         setKeyword(e.target.value)
     }
+    const handleCategoryChange = (e) =>{
+        setCategory(e.target.value)
+    }
 
-    const btnSearchHandler = () => {props.onSearchProducts(keyword)};
+    const btnSearchHandler = () => {props.onSearchProducts({keyword, category})};
 
     return (
         <div className="col-3">
@@ -21,11 +25,11 @@ import React, {useState} from 'react'
                     <input 
                     type="text" 
                     className='form-control mb-3' 
-                    onChange={handleChange}
+                    onChange={handleKeywordChange}
                     value={keyword}
                     />
                     <label htmlFor='searchCategory'>Product Category</label>
-                    <select className='form-control' >
+                    <select className='form-control' onChange={handleCategoryChange}>
                         <option value="">All Items</option>
                         <option value="kaos">Kaos</option>
                         <option value="celana">Celana</option>
