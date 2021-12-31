@@ -1,11 +1,15 @@
 import React from 'react'
 
+import ProductCard from '../../../components/ProductCard/Index';
+
 function ListProduct(props) {
-    console.log(props);
+
+    const renderProducts = () => {
+      return  props.products.map((product) => <ProductCard key={product.id} product={product}/>)
+    };
+    
     return (
-        <div className='col-9'>
-            <h1>List Product</h1>
-        </div>
+        <div className='d-flex flex-wrap col-9'>{renderProducts()}</div>
     )
 }
 
