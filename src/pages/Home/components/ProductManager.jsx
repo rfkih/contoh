@@ -2,17 +2,30 @@ import React, {useState} from 'react'
 
  function ProductManager(props) {
 
-   const [keyword, setKeyword] = useState('')
-   const [category,setCategory] = useState('')
+//    const [keyword, setKeyword] = useState('')
+//    const [category,setCategory] = useState('')
+   const [formState,setFormState] = useState({keyword: "", category: ""})
 
-    const handleKeywordChange = (e) =>{
-        setKeyword(e.target.value)
-    }
-    const handleCategoryChange = (e) =>{
-        setCategory(e.target.value)
-    }
 
-    const btnSearchHandler = () => {props.onSearchProducts({keyword, category})};
+    // const handleKeywordChange = (e) =>{
+    //     setKeyword(e.target.value)
+    // }
+    // const handleCategoryChange = (e) =>{
+    //     setCategory(e.target.value)
+    // }
+
+    const handleChange = (e) => {
+        const newState = { [e.target.name] : e.target.value }
+
+        setFormState({...formState, [e.target.name] : e.target.value})
+    };
+
+    const btnSearchHandler = () => {
+        props.onSearchProducts({
+            keyword: formState.keyword,
+            category: formState.category,
+        })
+    };
 
     return (
         <div className="col-3">
@@ -23,17 +36,21 @@ import React, {useState} from 'react'
                 <div className="card-body">
                     <label>Product Name</label>
                     <input 
+                    name = "keyword"
                     type="text" 
                     className='form-control mb-3' 
-                    onChange={handleKeywordChange}
-                    value={keyword}
+                    onChange={handleChange}
+                    // value={keyword}
                     />
                     <label htmlFor='searchCategory'>Product Category</label>
-                    <select className='form-control' onChange={handleCategoryChange}>
-                        <option value="">All Items</option>
-                        <option value="kaos">Kaos</option>
-                        <option value="celana">Celana</option>
-                        <option value="aksesoris">Aksesoris</option>
+                    <select 
+                        name='category' 
+                        className='form-control' 
+                        onChange={handleChange}>
+                            <option value="">All Items</option>
+                            <option value="kaos">Kaos</option>
+                            <option value="celana">Celana</option>
+                            <option value="aksesoris">Aksesoris</option>
                     </select>
                     <button 
                         onClick={btnSearchHandler}
