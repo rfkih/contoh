@@ -1,10 +1,12 @@
 import React, {useState} from 'react'
 
+
+//props : onSearchProducts, onSortProducts
  function ProductManager(props) {
 
 //    const [keyword, setKeyword] = useState('')
 //    const [category,setCategory] = useState('')
-   const [formState,setFormState] = useState({keyword: "", category: ""})
+   const [formState,setFormState] = useState({keyword: "", category: "", sortBy:""})
 
 
     // const handleKeywordChange = (e) =>{
@@ -18,6 +20,12 @@ import React, {useState} from 'react'
         const newState = { [e.target.name] : e.target.value }
 
         setFormState({...formState, [e.target.name] : e.target.value})
+    };
+
+    const handleSortChange = (e) => {
+
+        setFormState({...formState, [e.target.name] : e.target.value})
+        props.onSortProducts(e.target.value);
     };
 
     const btnSearchHandler = () => {
@@ -55,6 +63,24 @@ import React, {useState} from 'react'
                     <button 
                         onClick={btnSearchHandler}
                         className="btn btn-outline-primary mt-3 d-block w-100">Search</button>
+                </div>
+            </div>
+            <div className="cart mt-4">
+                <div className="card-header">
+                    <strong>Sort Products</strong>
+                </div>
+                <div className="card-body">
+                    <label className="mb-2"> Sort by</label>
+                    <select 
+                     name="sortBy"
+                     className='form-control'
+                     onChange={handleSortChange}>
+                         <option value="">Default</option>
+                         <option value="lowPrice">Lowest Price</option>
+                         <option value="highPrice">Highest Price</option>
+                         <option value="az">A-Z</option>
+                         <option value="za">Z-A</option>
+                     </select>
                 </div>
             </div>
         </div>
