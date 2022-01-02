@@ -27,7 +27,8 @@ function Index() {
     },[]);
 
     useEffect(() => {
-      createFinalProducts()},[filterState])
+      createFinalProducts()
+    },[filterState])
     
 
     // const onFilterProducts = (obj)=> {

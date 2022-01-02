@@ -20,7 +20,7 @@ import React, {useState} from 'react'
     };
 
     const handleSortChange = (e) => {
-        props.onSortProducts(e.target.value);
+        setFilterState({...filterState, [e.target.name]: e.target.value });
     };
 
     const btnSearchHandler = () => {
