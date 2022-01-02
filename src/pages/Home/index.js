@@ -10,8 +10,14 @@ function Index() {
 
     const [products, setProducts] = useState([]);
     const [finalProducts, setFinalProducts] = useState([])
-    const [paginationState, setPaginationState] = useState({page: 1, maxPage:0, itemsPerPage: 5})
-    const [filterState, setFilterState] = useState ({keyword:'', category:'',sortBy:''})
+    const [paginationState, setPaginationState] = useState({
+      page: 1, 
+      maxPage:0, 
+      itemsPerPage: 5});
+    const [filterState, setFilterState] = useState ({
+      keyword:'', 
+      category:'',
+      sortBy:''});
 
     useEffect( async () =>{
         axios.get("http://localhost:2021/products")
@@ -123,6 +129,8 @@ function Index() {
             <ProductManager 
             setFilterState={setFilterState}
             filterState={filterState}
+            paginationState={paginationState}
+            setPaginationState={setPaginationState}
             />
             <ListProduct products={finalProducts}/>
           </div>

@@ -1,10 +1,12 @@
 import React, {useState} from 'react'
 
 
-//props : setFilterState, filterState
+//props : setFilterState, filterState, paginationState
  function ProductManager(props) {
 
-    const{ setFilterState, filterState} = props
+    const{ setFilterState, filterState, paginationState, setPaginationState} = props
+
+    const{page, maxPage} = paginationState
 
    const [formState,setFormState] = useState(
        {keyword: "", 
@@ -26,6 +28,18 @@ import React, {useState} from 'react'
     const btnSearchHandler = () => {
         setFilterState({...filterState, ...formState})
     };
+
+    const btnNextPageHandler = () => {
+        if (page < maxPage)
+        setPaginationState ({...paginationState, page :page + 1 })
+    }
+
+    const btnPrevPageHandler = () => {
+        if (page > 1 )
+        setPaginationState ({...paginationState, page :page - 1 })
+    }
+
+
 
     return (
         <div className="col-3">
@@ -80,9 +94,9 @@ import React, {useState} from 'react'
             {/* pagination */}
             <div className="mt-3">
                 <div className="d-flex flex-row justify-content-between align-items-center">
-                    <button className="btn btn-dark">{"<"}</button>
-                    <div className="text-center">Page 1 of 3</div>
-                    <button className="btn btn-dark">{">"}</button>
+                    <button onClick={btnPrevPageHandler} className={`btn btn-dark ${ !(page > 1) && 'disabled' } ` }>{"<"}</button>
+                    <div className="text-center">Page {page} of {maxPage}</div>
+                    <button onClick={btnNextPageHandler} className={`btn btn-dark ${ !(page < maxPage) && 'disabled' } ` }>{">"}</button>
                 </div>
             </div>
         </div>
