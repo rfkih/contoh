@@ -1,7 +1,7 @@
 import React,{useState, useEffect} from 'react'
 import ListProduct from './components/ListProduct'
 import ProductManager from './components/ProductManager'
-import axios from 'axios';
+import axios from '../../utils/axios';
 
 
 function Index() {
@@ -20,12 +20,13 @@ function Index() {
       sortBy:''});
 
     useEffect( async () =>{
-        axios.get("http://localhost:2021/products")
+        axios.get("/products")
         .then((res) => {
           const {data} = res
+          setPaginationState({...paginationState, maxPage: Math.ceil(data.length/ paginationState.itemsPerPage)});
           setProducts(data);
           setFinalProducts(data)
-          setPaginationState({...paginationState, maxPage: Math.ceil(data.length/ paginationState.itemsPerPage)})
+          
         })
         .catch((error) => {
           console.log(alert(error.message))

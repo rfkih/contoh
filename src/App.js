@@ -1,6 +1,7 @@
 import React from 'react';
 import "bootstrap/dist/css/bootstrap.css";
-import UseEffectComponent from './hooks/UseEffectComponent';
+
+import ManageProduct from './pages/ManageProduct/Index'
 
 
 import Home from './pages/Home'
@@ -8,7 +9,7 @@ import Home from './pages/Home'
 function App() {
     return (
         <h1>
-            <Home/>
+            <ManageProduct/>
         </h1>
     )
 }
