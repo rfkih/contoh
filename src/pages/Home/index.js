@@ -34,19 +34,8 @@ function Index() {
 
     useEffect(() => {
       createFinalProducts()
-    },[filterState])
+    },[filterState, paginationState.page])
     
-
-    // const onFilterProducts = (obj)=> {
-    //   const {keyword, category} = obj;
-    //   const filterResult = products.filter((product)=>{
-    //    const productLowerCase = product.productName.toLowerCase()
-    //    const keywordLowerCase = keyword.toLowerCase()
-    //    return productLowerCase.includes(keywordLowerCase) && product.category.includes(category)
-    //   });
-
-    //   setFilteredProducts(filterResult)
-    // };
 
     const compareStringAsc = (a, b) => {
       if (a.productName < b.productName){
@@ -68,28 +57,7 @@ function Index() {
       }
     }
 
-    // const onSortProducts = (sortBy) => {
-    //   const rawData = [...filteredProducts]
 
-    //   switch (sortBy) {
-    //     case 'lowPrice':
-    //       rawData.sort((a,b) => {
-    //         return a.price - b.price;})
-    //       break;
-    //     case 'highPrice':
-    //       rawData.sort((a,b) => {
-    //         return b.price - a.price;})
-          
-    //       break;
-    //     case 'az':
-    //       rawData.sort (compareStringAsc);
-    //         break;
-    //     case 'za':
-    //       rawData.sort (compareStringDesc)
-    //         break;
-    //   }
-    //   setFilteredProducts(rawData)
-    // };
 
     const createFinalProducts = () => {
 
@@ -99,6 +67,15 @@ function Index() {
       const productLowerCase = product.productName.toLowerCase()
       const keywordLowerCase = keyword.toLowerCase()
      return productLowerCase.includes(keywordLowerCase) && product.category.includes(category)
+    });
+    
+    const newMaxPage = filterResult.length 
+    ? Math.ceil(filterResult.length / paginationState.itemsPerPage) 
+    : 1;
+
+    setPaginationState({
+      ...paginationState,  
+      maxPage: newMaxPage
     });
     
 
@@ -119,9 +96,18 @@ function Index() {
           filterResult.sort (compareStringDesc)
             break;
       }
-      setFinalProducts(filterResult)
+
+      const {page, itemsPerPage} = paginationState;  
+      //Slicing 
+      const startIndex = (page -1) * itemsPerPage;
+      const endIndex = startIndex + itemsPerPage;
+      const slicedTodos = filterResult.slice(startIndex, endIndex);
+
+      setFinalProducts(slicedTodos)
       
     };
+
+    
 
     return (
         <div className='container mt-5'>

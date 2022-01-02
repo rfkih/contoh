@@ -26,7 +26,8 @@ import React, {useState} from 'react'
     };
 
     const btnSearchHandler = () => {
-        setFilterState({...filterState, ...formState})
+        setFilterState({...filterState, ...formState});
+        setPaginationState({...paginationState, page: 1})
     };
 
     const btnNextPageHandler = () => {
