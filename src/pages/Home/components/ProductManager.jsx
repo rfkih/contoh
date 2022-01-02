@@ -1,20 +1,17 @@
 import React, {useState} from 'react'
 
 
-//props : onSearchProducts, onSortProducts , paginationState
+//props : setFilterState, filterState
  function ProductManager(props) {
 
-    const{page, maxPage} = props.paginationState
+    const{ setFilterState, filterState} = props
 
-   const [formState,setFormState] = useState({keyword: "", category: "", sortBy:""})
+   const [formState,setFormState] = useState(
+       {keyword: "", 
+       category: "", 
+    });
 
 
-    // const handleKeywordChange = (e) =>{
-    //     setKeyword(e.target.value)
-    // }
-    // const handleCategoryChange = (e) =>{
-    //     setCategory(e.target.value)
-    // }
 
     const handleChange = (e) => {
         const newState = { [e.target.name] : e.target.value }
@@ -23,16 +20,11 @@ import React, {useState} from 'react'
     };
 
     const handleSortChange = (e) => {
-
-        setFormState({...formState, [e.target.name] : e.target.value})
         props.onSortProducts(e.target.value);
     };
 
     const btnSearchHandler = () => {
-        props.onSearchProducts({
-            keyword: formState.keyword,
-            category: formState.category,
-        })
+        setFilterState({...filterState, ...formState})
     };
 
     return (
@@ -89,7 +81,7 @@ import React, {useState} from 'react'
             <div className="mt-3">
                 <div className="d-flex flex-row justify-content-between align-items-center">
                     <button className="btn btn-dark">{"<"}</button>
-                    <div className="text-center">Page {page} of {maxPage}</div>
+                    <div className="text-center">Page 1 of 3</div>
                     <button className="btn btn-dark">{">"}</button>
                 </div>
             </div>

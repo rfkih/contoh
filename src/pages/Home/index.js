@@ -9,15 +9,16 @@ function Index() {
     
 
     const [products, setProducts] = useState([]);
-    const [filteredProducts, setFilteredProducts] = useState([])
+    const [finalProducts, setFinalProducts] = useState([])
     const [paginationState, setPaginationState] = useState({page: 1, maxPage:0, itemsPerPage: 5})
+    const [filterState, setFilterState] = useState ({keyword:'', category:'',sortBy:''})
 
     useEffect( async () =>{
         axios.get("http://localhost:2021/products")
         .then((res) => {
           const {data} = res
           setProducts(data);
-          setFilteredProducts(data)
+          setFinalProducts(data)
           setPaginationState({...paginationState, maxPage: Math.ceil(data.length/ paginationState.itemsPerPage)})
         })
         .catch((error) => {
@@ -25,15 +26,19 @@ function Index() {
         })
     },[]);
 
-    const onSearchProducts = ({keyword, category})=> {
-      const filterResult = products.filter((product)=>{
-       const productLowerCase = product.productName.toLowerCase()
-       const keywordLowerCase = keyword.toLowerCase()
-       return productLowerCase.includes(keywordLowerCase) && product.category.includes(category)
-      });
 
-      setFilteredProducts(filterResult)
-    };
+    
+
+    // const onFilterProducts = (obj)=> {
+    //   const {keyword, category} = obj;
+    //   const filterResult = products.filter((product)=>{
+    //    const productLowerCase = product.productName.toLowerCase()
+    //    const keywordLowerCase = keyword.toLowerCase()
+    //    return productLowerCase.includes(keywordLowerCase) && product.category.includes(category)
+    //   });
+
+    //   setFilteredProducts(filterResult)
+    // };
 
     const compareStringAsc = (a, b) => {
       if (a.productName < b.productName){
@@ -55,43 +60,69 @@ function Index() {
       }
     }
 
-    const onSortProducts = (sortBy) => {
-      const rawData = [...filteredProducts]
+    // const onSortProducts = (sortBy) => {
+    //   const rawData = [...filteredProducts]
+
+    //   switch (sortBy) {
+    //     case 'lowPrice':
+    //       rawData.sort((a,b) => {
+    //         return a.price - b.price;})
+    //       break;
+    //     case 'highPrice':
+    //       rawData.sort((a,b) => {
+    //         return b.price - a.price;})
+          
+    //       break;
+    //     case 'az':
+    //       rawData.sort (compareStringAsc);
+    //         break;
+    //     case 'za':
+    //       rawData.sort (compareStringDesc)
+    //         break;
+    //   }
+    //   setFilteredProducts(rawData)
+    // };
+
+    const createFinalProducts = () => {
+
+      const {keyword, category, sortBy} = filterState
+      
+      const filterResult = products.filter((product)=>{
+      const productLowerCase = product.productName.toLowerCase()
+      const keywordLowerCase = keyword.toLowerCase()
+     return productLowerCase.includes(keywordLowerCase) && product.category.includes(category)
+    });
+    
 
       switch (sortBy) {
         case 'lowPrice':
-          rawData.sort((a,b) => {
+          filterResult.sort((a,b) => {
             return a.price - b.price;})
           break;
         case 'highPrice':
-          rawData.sort((a,b) => {
+          filterResult.sort((a,b) => {
             return b.price - a.price;})
           
           break;
         case 'az':
-          rawData.sort (compareStringAsc);
+          filterResult.sort (compareStringAsc);
             break;
         case 'za':
-          rawData.sort (compareStringDesc)
+          filterResult.sort (compareStringDesc)
             break;
       }
-      setFilteredProducts(rawData)
+      setFinalProducts()
+      
     };
 
-    const createProductList = (keyword, category, sortBy) => {
-
-    }
-
-    
     return (
         <div className='container mt-5'>
           <div className='row'>
             <ProductManager 
-            onSearchProducts={onSearchProducts} 
-            onSortProducts={onSortProducts}
-            paginationState={paginationState}
+            setFilterState={setFilterState}
+            filterState={filterState}
             />
-            <ListProduct products={filteredProducts}/>
+            <ListProduct products={finalProducts}/>
           </div>
             
         </div>
