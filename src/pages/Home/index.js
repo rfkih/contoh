@@ -10,12 +10,15 @@ function Index() {
 
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([])
+    const [paginationState, setPaginationState] = useState({page: 1, maxPage:0, itemsPerPage: 5})
 
     useEffect( async () =>{
         axios.get("http://localhost:2021/products")
         .then((res) => {
-          setProducts(res.data);
-          setFilteredProducts(res.data)
+          const {data} = res
+          setProducts(data);
+          setFilteredProducts(data)
+          setPaginationState({...paginationState, maxPage: Math.ceil(data.length/ paginationState.itemsPerPage)})
         })
         .catch((error) => {
           console.log(alert(error.message))
@@ -75,11 +78,19 @@ function Index() {
       setFilteredProducts(rawData)
     };
 
+    const createProductList = (keyword, category, sortBy) => {
+
+    }
+
     
     return (
         <div className='container mt-5'>
           <div className='row'>
-            <ProductManager onSearchProducts={onSearchProducts} onSortProducts={onSortProducts}/>
+            <ProductManager 
+            onSearchProducts={onSearchProducts} 
+            onSortProducts={onSortProducts}
+            paginationState={paginationState}
+            />
             <ListProduct products={filteredProducts}/>
           </div>
             

@@ -1,11 +1,11 @@
 import React, {useState} from 'react'
 
 
-//props : onSearchProducts, onSortProducts
+//props : onSearchProducts, onSortProducts , paginationState
  function ProductManager(props) {
 
-//    const [keyword, setKeyword] = useState('')
-//    const [category,setCategory] = useState('')
+    const{page, maxPage} = props.paginationState
+
    const [formState,setFormState] = useState({keyword: "", category: "", sortBy:""})
 
 
@@ -89,7 +89,7 @@ import React, {useState} from 'react'
             <div className="mt-3">
                 <div className="d-flex flex-row justify-content-between align-items-center">
                     <button className="btn btn-dark">{"<"}</button>
-                    <div className="text-center">Page 1 of 3</div>
+                    <div className="text-center">Page {page} of {maxPage}</div>
                     <button className="btn btn-dark">{">"}</button>
                 </div>
             </div>
