@@ -26,7 +26,8 @@ function Index() {
         })
     },[]);
 
-
+    useEffect(() => {
+      createFinalProducts()},[filterState])
     
 
     // const onFilterProducts = (obj)=> {
@@ -111,7 +112,7 @@ function Index() {
           filterResult.sort (compareStringDesc)
             break;
       }
-      setFinalProducts()
+      setFinalProducts(filterResult)
       
     };
 
