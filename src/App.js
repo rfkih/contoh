@@ -1,5 +1,6 @@
 import React from 'react';
 import "bootstrap/dist/css/bootstrap.css";
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 
 import ManageProduct from './pages/ManageProduct/Index'
 
@@ -8,9 +9,12 @@ import Home from './pages/Home'
 
 function App() {
     return (
-        <h1>
-            <ManageProduct/>
-        </h1>
+        <Router>
+            <Routes>
+                <Route path="/" element={<Home/>}/>
+                <Route path="manage-product" element={<ManageProduct/>}/>
+            </Routes>  
+        </Router>
     )
 }
 

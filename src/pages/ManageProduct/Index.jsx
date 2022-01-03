@@ -48,6 +48,8 @@ function ManageProduct() {
         category, 
         description
       };
+
+      
       axios
         .post("/products" ,newProduct)
         .then(res => console.log({res}))
