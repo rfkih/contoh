@@ -1,6 +1,7 @@
 import React,{useState, useEffect} from 'react'
 import axios from '../../utils/axios'
 import ProductList from './component/ProductList';
+import "./style.css"
 
 function ManageProduct() {
     const [products, setProducts] = useState ([]);
@@ -17,7 +18,7 @@ function ManageProduct() {
     }, []);
 
     const renderProducts = () => {
-      products.map((product) =><ProductList product={product}/>);
+      return products.map((product) =><ProductList product={product}/>);
     };
 
 
@@ -37,7 +38,7 @@ function ManageProduct() {
           </tr>
         </thead>
         <tbody>
-
+          {renderProducts()}
         </tbody>
       </table> 
     </div>

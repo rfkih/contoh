@@ -7,7 +7,20 @@ function ProductList(props) {
 
     return (
         <tr>
-            <td>{val}</td>
+            <td>{id}</td>
+            <td>{productName}</td>
+            <td>{price}</td>
+            <td>
+                <img className='admin-product-image' src={productImage} alt="gambar"/>
+            </td>
+            <td>{description}</td>
+            <td>{category}</td>
+            <td>
+                <button className="btn btn-outline-secondary">Edit</button>
+            </td>
+            <td>
+                <button className="btn btn-outline-danger">Delete</button>
+            </td>
         </tr>
     )
 }
