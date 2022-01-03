@@ -41,6 +41,55 @@ function ManageProduct() {
           {renderProducts()}
         </tbody>
       </table> 
+
+      <table className= "W-100" >
+        <tfoot className="bg-light">
+          <tr>
+            <td>
+              <input 
+                placeholder='Product Name'
+                name="addProductName"
+                type ="text"
+                className= "formcontrol" 
+                />
+              </td>
+            <td>
+              <input 
+                placeholder='Price'
+                name ="addPrice" 
+                type ="number" 
+                className='formcontrol'/>
+            </td>
+            <td>
+              <input 
+                placeholder='Image'
+                name="addProductImage"
+                type="text"
+                className="form-control"
+              />
+            </td>
+            <td>
+                <input 
+                  placeholder='Description'
+                  name="addDescription"
+                  type="text"
+                  className="form-control"
+                />
+            </td>
+            <td>
+              <select name ="addCategory" className='form-control'>
+                <option value="">All Items</option>
+                <option value="kaos">Kaos</option>
+                <option value="celana">Celana</option>
+                <option value="aksesoris">Aksesoris</option>
+              </select>
+            </td>
+            <td colSpan="2">
+              <button className='btn btn-info'>Add Product</button>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
     </div>
   );
 }
