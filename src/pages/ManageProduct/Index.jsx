@@ -2,6 +2,7 @@ import React,{useState, useEffect} from 'react'
 import axios from '../../utils/axios'
 import ProductList from './component/ProductList';
 import "./style.css"
+import {Button} from 'reactstrap'
 
 function ManageProduct() {
     const [products, setProducts] = useState ([]);
@@ -49,7 +50,7 @@ function ManageProduct() {
         description
       };
 
-      
+
       axios
         .post("/products" ,newProduct)
         .then(res => console.log({res}))
@@ -129,7 +130,7 @@ function ManageProduct() {
               </select>
             </td>
             <td colSpan="2">
-              <button onClick={addNewProduct} className='btn btn-info'>Add Product</button>
+              <Button outline color='primary' onClick={addNewProduct}> Add Product</Button>
             </td>
           </tr>
         </tfoot>

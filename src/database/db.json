@@ -167,6 +167,14 @@
       "productName": "celana Jeans",
       "category": "celana",
       "description": "5-pocket jeans in washed stretch denim with a regular waist, zip fly and button, and skinny legs."
+    },
+    {
+      "id": 1641221729710,
+      "productImage": "https://t3.ftcdn.net/jpg/02/76/76/24/360_F_276762426_AkhBVwChyND6QAVAiTW0qUdjPiPm6TB7.jpg",
+      "price": "26000",
+      "productName": "bandana",
+      "category": "aksesoris",
+      "description": "Red bandana with high quality material"
     }
   ]
 }
