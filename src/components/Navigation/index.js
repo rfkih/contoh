@@ -7,11 +7,11 @@ function index() {
     return (
         <div>
             <Navbar color="light" light>
-                <NavbarBrand href="/">EMMERCE</NavbarBrand>
+                <NavbarBrand tag={Link} to="/">EMMERCE</NavbarBrand>
                 <Nav className="ms-auto" navbar>
                     <NavItem>
                         <NavLink tag={Link} to="/manage-product"> 
-                            anage Product 
+                            `Manage Product 
                         </NavLink>
                     </NavItem>
                 </Nav>
