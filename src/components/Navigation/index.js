@@ -11,7 +11,7 @@ function index() {
                 <Nav className="ms-auto" navbar>
                     <NavItem>
                         <NavLink tag={Link} to="/manage-product"> 
-                            anage Product 
+                            Manage Product 
                         </NavLink>
                     </NavItem>
                 </Nav>
