@@ -179,24 +179,14 @@
   ],
   "carts": [
     {
-      "id": 1641712534538,
-      "productName": "Celana Jogger Hijau",
-      "price": 230000,
-      "productImage": "https://d29c1z66frfv6c.cloudfront.net/pub/media/catalog/product/large/5284ccffa03701c130991367932b957505dae0bb_xxl-1.jpg",
-      "description": "Joggers in sweatshirt fabric with an elasticated drawstring waist, zipped side pockets, a low crotch and tapered legs with seams at the knees and ribbed hems.",
-      "category": "celana",
-      "quantity": 1,
-      "productId": 12
-    },
-    {
-      "id": 1641712538242,
-      "productName": "Celana Jogger Hijau",
-      "price": 230000,
-      "productImage": "https://d29c1z66frfv6c.cloudfront.net/pub/media/catalog/product/large/5284ccffa03701c130991367932b957505dae0bb_xxl-1.jpg",
-      "description": "Joggers in sweatshirt fabric with an elasticated drawstring waist, zipped side pockets, a low crotch and tapered legs with seams at the knees and ribbed hems.",
-      "category": "celana",
-      "quantity": 2,
-      "productId": 12
+      "id": 1641715645841,
+      "productName": "Kaos Hitam Polos",
+      "price": 50000,
+      "productImage": "https://d29c1z66frfv6c.cloudfront.net/pub/media/catalog/product/large/1ccc62f925118a5e2a54f9ca1b0eac4b197477ba_xxl-1.jpg",
+      "description": "Round-necked T-shirt in soft cotton jersey.",
+      "category": "kaos",
+      "productId": 1,
+      "quantity": 4
     }
   ]
 }

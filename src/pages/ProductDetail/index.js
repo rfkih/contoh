@@ -28,12 +28,34 @@ function ProductDetail() {
     }
 
     const addToCartHandler = ()=>{
-        const newCart = {...product, id :new Date().getTime(), quantity, productId: product.id};
-        axios.post("/carts",newCart)
-        .then(res => {
-            console.log({res});
+
+        axios.get('/carts',{ params: { productId: product.id} })
+        .then((res) => {
+            if (res.data.length){
+                
+                const cart = res.data[0];
+
+                axios.patch(`/carts/${cart.id}`, {quantity : cart.quantity + quantity})
+                .then((res) => {alert("Berhasil Menambahkan Produk");})
+                .catch((err) => {alert("gagal Menambahkan produk")})
+                
+            }else {
+                const newCart = {
+                ...product, 
+                id :new Date().getTime(),
+                productId: product.id,
+                quantity
+                };
+
+                axios.post("/carts",newCart)
+                .then((res) => {alert("Berhasil Membuat Cart Baru")})
+                .catch((err) => {alert("gagal membuat cart baru")})
+            }
         })
-        .catch(err => {console.log({err})})
+        .catch((err) => {alert("gagal mengambil")})
+
+
+      
     };
 
     const {id, productImage, productName, price, description} = product
