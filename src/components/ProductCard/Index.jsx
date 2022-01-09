@@ -1,9 +1,11 @@
-import React from 'react'
-import './style.css'
+import React from 'react';
+import './style.css';
+import {Link} from "react-router-dom";
+import {Button} from "reactstrap"
 
 function ProductCard(props) {
 
-    const {productName, productImage, price} = props.product;
+    const {id, productName, productImage, price} = props.product;
 
     return (
        <div className="card product-card">
@@ -14,7 +16,8 @@ function ProductCard(props) {
                    <span className="text-muted"> Rp. {price}</span>
                </div>
                <div className="d-flex flex-row justify-content-end">
-                   <button className='btn btn-primary mt-2 w-100'>Detail </button>
+                   <Button className='w-100 mt-2' tag={Link} to={`/product/${id}`} outline color="primary">Detail </Button>
+                   {/* <button className='btn btn-primary mt-2 w-100'>Detail </button> */}
                </div>
            </div>
 
