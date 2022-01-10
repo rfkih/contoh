@@ -1,10 +1,12 @@
 import validateData from 'json-server/lib/server/router/validate-data';
-import React from 'react'
+import React, {useState} from 'react'
 import axios from '../../../utils/axios'
 
 function ProductList(props) {
 
     const {id, productName, productImage, price, description, category} = props.product;
+
+    const [isEdit, setIsEdit] = useState(false)
 
     const onBtnDeleteClick = () =>{
         axios
@@ -17,10 +19,13 @@ function ProductList(props) {
 
     const onBtnSaveClick = () => {}
     const onBtnEditClick = () => {
-        props.setSelectedProductId(id)
+        setIsEdit(true)
+    }
+    const onBtnCancelClick = () =>{
+        setIsEdit(false)
     }
 
-    if(props.selectedProductId === id) {
+    if(isEdit) {
         return (
             <tr>
                 <td>{id}</td>
@@ -49,7 +54,7 @@ function ProductList(props) {
                     </select>
                 </td>
                 <td>
-                    <button  className="btn btn-outline-danger">Cancel</button>
+                    <button onClick={onBtnCancelClick} className="btn btn-outline-danger">Cancel</button>
                 </td>
                 <td>
                     <button onClick={onBtnSaveClick} className="btn btn-outline-success">Save</button>
