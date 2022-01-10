@@ -14,6 +14,8 @@ function ManageProduct() {
       category:"",
     });
 
+    const [selectedProductId, setSelectedProductId] = useState(0)
+
     const handleChange =(e) => {
       setFormState({...formState, [e.target.name]: e.target.value})
     };
@@ -34,7 +36,13 @@ function ManageProduct() {
     }, []);
 
     const renderProducts = () => {
-      return products.map((product) =><ProductList fetchProducts={fetchProducts} product={product}/>);
+      return products.map((product) =>
+      <ProductList 
+      setSelectedProductId={setSelectedProductId}
+      selectedProductId={selectedProductId}
+      fetchProducts={fetchProducts} 
+      product={product}
+      />);
     };
     
 
