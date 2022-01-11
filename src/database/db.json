@@ -177,6 +177,16 @@
       "description": "Red bandana with high quality material"
     }
   ],
+  "users" :[
+    {
+      "fullName": "Rifki",
+      "username": "rfkih",
+      "email":"email@yahoo.com",
+      "password": "incorrect",
+      "role": "user",
+      "id": 87
+    }
+  ],
   "carts": [
     {
       "id": 1641715645841,
