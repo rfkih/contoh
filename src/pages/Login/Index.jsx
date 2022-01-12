@@ -1,10 +1,12 @@
 import React,{useState} from 'react'
 import {Link} from 'react-router-dom'
 import axios from "../../utils/axios"
+import{loginAction} from '../../store/actions'
+import {useDispatch} from "react-redux"
 
 
 function Login() {
-
+    const dispatch = useDispatch()
     const[formState, setFormState] = useState({
         username:"",
         password:"",
@@ -18,7 +20,10 @@ function Login() {
         axios.get("/users",{
             params:{username: formState.username, password: formState.password}
         })
-        .then(res => console.log(res.data[0]))
+        .then(res => {
+            const {id, username, role} =res.data[0]
+            loginAction({dispatch, id, username, role})
+        })
         .catch((err) => console.log({err}))
     }
 
