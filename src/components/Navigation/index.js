@@ -1,9 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import{Navbar,NavbarBrand,Nav,NavItem,NavLink} from 'reactstrap'
+import { useSelector, useDispatch} from 'react-redux' 
 
 
 function index() {
+   const username =  useSelector((state) =>{
+        return state.auth.username;
+    })
+
+    console.log(`navigation : ${username} `);
     return (
         <div>
             <Navbar color="light" light expand="md">

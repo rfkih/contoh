@@ -58,6 +58,7 @@ function Login() {
                             />
                             <div className="d-flex flex-row justify-content-between align-items-center">
                                 <button onClick={onLoginClick} className="btn btn-primary mt-2">Login</button>
+                                
                                 <Link to="/register">Or register</Link>
                             </div>
                         </div>
