@@ -1,16 +1,21 @@
 import React,{useState} from 'react'
-import {Link} from 'react-router-dom'
+import {Link, Navigate} from 'react-router-dom'
 import axios from "../../utils/axios"
 import{loginAction} from '../../store/actions'
-import {useDispatch} from "react-redux"
+import {useDispatch, useSelector} from "react-redux"
 
 
 function Login() {
     const dispatch = useDispatch()
+    const username = useSelector ((state) => state.auth.username)
     const[formState, setFormState] = useState({
         username:"",
         password:"",
-    })
+    });
+
+    if(username){
+      return  <Navigate to ="/" replace />
+    }
 
     const handleChange = (e) =>{
         setFormState({...formState, [e.target.name]: e.target.value})

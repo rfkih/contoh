@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import {
     Navbar,
     NavbarBrand,
@@ -14,12 +14,12 @@ import {
 import { useSelector, useDispatch} from 'react-redux' 
 
 
-function index() {
+function Navigation() {
     const { username, role } = useSelector((state) => {
         return state.auth;
       });
 
-    console.log(`navigation : ${username} `);
+   
     return (
         <div>
             <Navbar color="light" light expand="md">
@@ -68,4 +68,4 @@ function index() {
     )
 }
 
-export default index
+export default Navigation
