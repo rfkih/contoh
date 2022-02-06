@@ -3,7 +3,9 @@ import axios from '../../utils/axios'
 import ProductList from './component/ProductList';
 import "./style.css"
 import {Button} from 'reactstrap'
-
+import {Navigate} from "react-router-dom"
+import {useSelector} from "react-redux"
+ 
 function ManageProduct() {
     const [products, setProducts] = useState ([]);
     const [formState, setFormState] = useState ({
@@ -13,6 +15,9 @@ function ManageProduct() {
       description: "",
       category:"",
     });
+
+    const role = useSelector ((state) => state.auth.role)
+
 
     
 
@@ -63,6 +68,10 @@ function ManageProduct() {
         .catch((error) => console.log({error}));
       fetchProducts()
     };
+
+    if(role !== "admin") {
+      return <Navigate to="/" replace/>
+    }
 
   return ( 
     <div className="container">

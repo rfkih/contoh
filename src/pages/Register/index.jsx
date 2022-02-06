@@ -14,7 +14,9 @@ function Register() {
 
   const [formState, setFormState] = useState (initFormState);
 
-    const {fullName, username, email, password} = formState
+  const {fullName, username, email, password} = formState;
+
+  const usernameLogin = useSelector((state) => state.auth.username)
 
   const handleChange = (e) =>{
       setFormState({...formState, [e.target.name]: e.target.value})
@@ -36,6 +38,11 @@ function Register() {
       alert("Register Berhasil");
     })
     .catch((err) => alert("Register Gagal"))
+  }
+  console.log(usernameLogin);
+
+  if(usernameLogin){
+    return  <Navigate to ="/" replace />
   }
 
   return (
