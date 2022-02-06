@@ -9,7 +9,9 @@ import Navigation from "./components/Navigation"
 import ProductDetail from './pages/ProductDetail';
 import Login from './pages/Login/Index';
 import Home from './pages/Home'
-import { loginAction} from "./store/actions"
+import Register from './pages/Register/index';
+import NotFound from './pages/NotFound';
+import { keepLoginAction} from "./store/actions"
 
 
 function App() {
@@ -23,7 +25,7 @@ function App() {
 
             const {id, username, role} = userData
         
-            loginAction({dispatch, id, username, role})
+            keepLoginAction({dispatch, id, username, role})
         }
 
         setIsLocalStorageChecked(true);
@@ -39,6 +41,8 @@ function App() {
                     <Route path="manage-product" element={<ManageProduct/>}/>
                     <Route path="login" element={<Login/>}/>
                     <Route path="product/:id" element={<ProductDetail/>}/>
+                    <Route path="register" element={<Register/>}/>
+                    <Route path="*" element={<NotFound/>}/>
                 </Routes>  
             </Router>
         )

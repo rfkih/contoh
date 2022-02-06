@@ -38,7 +38,7 @@ function Navigation() {
                 Transaction
               </DropdownItem>
               {role === "admin" && (
-                <DropdownItem tag={Link} to="/manage-products">
+                <DropdownItem tag={Link} to="/manage-product">
                   Admin
                 </DropdownItem>
               )}

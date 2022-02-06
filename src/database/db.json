@@ -195,18 +195,12 @@
       "id": 87
     },
     {
-      "params": {
-        "username": "rfkih",
-        "password": "incorrect"
-      },
-      "id": 88
-    },
-    {
-      "params": {
-        "username": "rfkih",
-        "password": "incorrect"
-      },
-      "id": 89
+      "fullName": "Rifki",
+      "username": "admin",
+      "email": "email@yahoo.com",
+      "password": "incorrect",
+      "role": "admin",
+      "id": 87
     }
   ],
   "carts": [
