@@ -201,6 +201,14 @@
       "password": "incorrect",
       "role": "admin",
       "id": 87
+    },
+    {
+      "id": 1644130052872,
+      "role": "user",
+      "fullName": "logi",
+      "username": "logitech",
+      "email": "trabas@mail.com",
+      "password": "incorrect"
     }
   ],
   "carts": [
