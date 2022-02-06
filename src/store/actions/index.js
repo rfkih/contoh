@@ -17,3 +17,11 @@ export const keepLoginAction = ({dispatch, id, username, role }) => {
     payload: {id, username, role},
   })
   };
+
+
+  export const logoutAction = (dispatch) => {
+    localStorage.removeItem("userData")
+    dispatch({
+      type: "LOGOUT_SUCCESS"
+    })
+  }
