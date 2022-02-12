@@ -17,9 +17,7 @@ function Login() {
 
     const handleChange = (e) =>{
        
-            setFormState({...formState, [e.target.name]: e.target.value})
-        
-       
+            setFormState({...formState, [e.target.name]: e.target.value}) 
     };
 
     const onInputPress = (e) => {

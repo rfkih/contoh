@@ -6,6 +6,27 @@ function ProductList(props) {
 
     const {id, productName, productImage, price, description, category} = props.product;
 
+    const [formState, setFormState] = useState ({
+        editProductName: productName, 
+        editProductImage: productImage, 
+        editPrice: price, 
+        editDescritpion: description, 
+        editCategory: category
+    });
+
+    const handleChange = (e) =>{
+       
+        setFormState({...formState, [e.target.name]: e.target.value}) 
+};
+
+    const {
+        editProductName, 
+        editProductImage, 
+        editPrice, 
+        editDescription, 
+        editCategory 
+    } = formState
+
     const [isEdit, setIsEdit] = useState(false)
 
     const onBtnDeleteClick = () =>{
@@ -17,7 +38,22 @@ function ProductList(props) {
         })
     }
 
-    const onBtnSaveClick = () => {}
+    const onBtnSaveClick = () => {
+
+        const newData = {
+            productName : editProductName, 
+            productImage :editProductImage, 
+            price : editPrice, 
+            description : editDescription , 
+            category : editCategory
+        }
+        axios.patch(`/products/${id}` , newData)
+        .then((rest) => {
+            setIsEdit(false)
+            props.fetchProducts()
+            alert("Berhasil update product"); 
+        }).catch((err) => alert("Gagal update product"))
+    }
     const onBtnEditClick = () => {
         setIsEdit(true)
     }
@@ -30,22 +66,35 @@ function ProductList(props) {
             <tr>
                 <td>{id}</td>
                 <td>
-                    <input type="text" Name="ProductName" />
+                    <input type="text" 
+                    Name="editProductName" 
+                    value={editProductName}
+                    onChange={handleChange}/>
                 </td>
                 <td>
-                    <input type="text" Name="Price" />
+                    <input type="text"
+                     Name="editPrice"
+                      value={editPrice} 
+                      onChange={handleChange}/>
                 </td>
                 <td>
-                    <input type="text" Name="Image" />
+                    <input type="text" 
+                    Name="editImage" 
+                    value={editProductImage} 
+                    onChange={handleChange}/>
                 </td>
                 <td>
-                    <input type="text" Name="Description" />
+                    <input type="text" 
+                    Name="editDescription" 
+                    value={editDescription} 
+                    onChange={handleChange} />
                 </td>
                 <td>
                     <select 
-                        name ="Category" 
+                        name ="editCategory" 
                         className='form-control ' 
-                        
+                        value={editCategory}
+                        onChange={handleChange}
                     >
                         <option value="">All Items</option>
                         <option value="kaos">Kaos</option>
