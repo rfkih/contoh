@@ -54,10 +54,9 @@ function ProductList(props) {
                     </select>
                 </td>
                 <td>
-                    <button onClick={onBtnCancelClick} className="btn btn-outline-danger">Cancel</button>
-                </td>
-                <td>
-                    <button onClick={onBtnSaveClick} className="btn btn-outline-success">Save</button>
+                    <button onClick={onBtnCancelClick} className=" w-100 btn btn-outline-danger">Cancel</button>
+                
+                    <button onClick={onBtnSaveClick} className=" w-100 btn btn-outline-success">Save</button>
                 </td>
             </tr>
         )
@@ -74,10 +73,9 @@ function ProductList(props) {
             <td>{description}</td>
             <td>{category}</td>
             <td>
-                <button onClick={onBtnEditClick} className="btn btn-outline-secondary">Edit</button>
-            </td>
-            <td>
-                <button onClick={onBtnDeleteClick} className="btn btn-outline-danger">Delete</button>
+                <button onClick={onBtnEditClick} className="w-100 btn btn-outline-secondary">Edit</button>
+            
+                <button onClick={onBtnDeleteClick} className="w-100 btn btn-outline-danger">Delete</button>
             </td>
         </tr>
     )
