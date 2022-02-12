@@ -16,10 +16,21 @@ function Login() {
     
 
     const handleChange = (e) =>{
-        setFormState({...formState, [e.target.name]: e.target.value})
+       
+            setFormState({...formState, [e.target.name]: e.target.value})
+        
+       
     };
 
-    const onLoginClick =() =>{
+    const onInputPress = (e) => {
+        if(e.code === "Enter") onLogin();
+    }
+
+    const onLoginClick = () => {
+        onLogin();
+    }
+
+    const onLogin =() =>{
         axios.get("/users",{
             params:{username: formState.username, password: formState.password}
         })
@@ -49,20 +60,24 @@ function Login() {
                     <div className="card">
                         <div className="cardbody">
                             <h5 className="font-weight-bold mb-3">Log in</h5>
-                            <input
-                                name="username"
-                                placeholder="Username"
-                                type="text"
-                                className='form-control my-2'
-                                onChange={handleChange}                               
+                            
+                                <input
+                                    name="username"
+                                    placeholder="Username"
+                                    type="text"
+                                    className='form-control my-2'
+                                    onChange={handleChange}
+                                    onKeyPress={onInputPress}                               
+                                />
+                                <input
+                                    name="password"
+                                    placeholder="Password"
+                                    type="password"
+                                    className='form-control my-2'
+                                    onChange={handleChange}
+                                    onKeyPress={onInputPress}
                             />
-                            <input
-                                name="password"
-                                placeholder="Password"
-                                type="password"
-                                className='form-control my-2'
-                                onChange={handleChange}
-                            />
+                            
                             <div className="d-flex flex-row justify-content-between align-items-center">
                                 <button onClick={onLoginClick} className="btn btn-primary mt-2">Login</button>
                                 
