@@ -22,7 +22,7 @@ function Register() {
       setFormState({...formState, [e.target.name]: e.target.value})
   };
 
-  const onRegisterClick = () =>{
+  const onRegisterClick = async () =>{
     const newUser = {
       id: new Date().getTime(),
       role:"user",
@@ -32,12 +32,15 @@ function Register() {
       password,
     };
 
-    axios.post("/users", newUser)
-    .then((res) => {
+    try {
+      await axios.post("/users", newUser)
       setFormState(initFormState)
       alert("Register Berhasil");
-    })
-    .catch((err) => alert("Register Gagal"))
+    } catch (error) {
+      alert("Register Gagal")
+    }
+
+
   }
   console.log(usernameLogin);
 

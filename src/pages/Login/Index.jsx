@@ -28,16 +28,19 @@ function Login() {
         onLogin();
     }
 
-    const onLogin =() =>{
-        axios.get("/users",{
-            params:{username: formState.username, password: formState.password}
-        })
-        .then(res => {
+    const onLogin = async () =>{
+
+        try {
+            const res = await axios.get("/users",{
+                params:{username: formState.username, password: formState.password}
+            })
             const {id, username, role} =res.data[0]
             const actionObj = loginAction({id, username, role})
             dispatch(actionObj)
-        })
-        .catch((err) => console.log({err}))
+
+        } catch (error) {
+            console.log({err})
+        }    
     }
 
     if(username){

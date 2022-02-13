@@ -209,6 +209,14 @@
       "username": "logitech",
       "email": "trabas@mail.com",
       "password": "incorrect"
+    },
+    {
+      "id": 1644756786299,
+      "role": "user",
+      "fullName": "Asus zenbook",
+      "username": "asus",
+      "email": "asus@mail.com",
+      "password": "incorrect"
     }
   ],
   "carts": [

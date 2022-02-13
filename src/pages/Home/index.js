@@ -20,18 +20,17 @@ function Index() {
       sortBy:''});
 
     useEffect( async () =>{
-        axios.get("/products")
-        .then((res) => {
-          const {data} = res
-          setPaginationState({...paginationState, maxPage: Math.ceil(data.length/ paginationState.itemsPerPage)});
-          setProducts(data);
-          setFinalProducts(data)
-          
-        })
-        .catch((error) => {
-          console.log(alert(error.message))
-        })
-    },[]);
+
+      try {
+        const res = await axios.get("/products")
+      const {data} = res
+      setProducts(data);
+      setFinalProducts(data)
+      setPaginationState({...paginationState, maxPage: Math.ceil(data.length/ paginationState.itemsPerPage)});
+        
+      } catch (error) {
+        console.log(alert(error.message))
+      }},[]);
 
     useEffect(() => {
       createFinalProducts()
