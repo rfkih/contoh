@@ -34,7 +34,8 @@ function Login() {
         })
         .then(res => {
             const {id, username, role} =res.data[0]
-            loginAction({dispatch, id, username, role})
+            const actionObj = loginAction({id, username, role})
+            dispatch(actionObj)
         })
         .catch((err) => console.log({err}))
     }

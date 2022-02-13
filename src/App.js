@@ -25,7 +25,7 @@ function App() {
 
             const {id, username, role} = userData
         
-            keepLoginAction({dispatch, id, username, role})
+            dispatch (keepLoginAction({ id, username, role}))
         }
 
         setIsLocalStorageChecked(true);

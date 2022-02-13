@@ -1,27 +1,27 @@
 
 
-export const loginAction = ({dispatch, id, username, role}) => {
+export const loginAction = ({ id, username, role}) => {
     localStorage.setItem("userData", JSON.stringify({id, username, role}));
 
-    dispatch({
+    return {
         type: "LOGIN_SUCCESS",
         payload: {id, username, role},
-    })
+    }
     
 
 };
 
-export const keepLoginAction = ({dispatch, id, username, role }) => {
-  dispatch({
+export const keepLoginAction = ({  id, username, role }) => {
+  return {
     type: "LOGIN_SUCCESS",
     payload: {id, username, role},
-  })
+  }
   };
 
 
-  export const logoutAction = (dispatch) => {
+  export const logoutAction = () => {
     localStorage.removeItem("userData")
-    dispatch({
+     return {
       type: "LOGOUT_SUCCESS"
-    })
+    }
   }
